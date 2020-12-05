@@ -6,4 +6,10 @@
     <string name="register">Register</string>
     <string name="sign_in">Sign In</string>
     <string name="type_your_password">Type your password</string>
+    <string name="reservation">Reservation</string>
+    <string name="date">Date</string>
+    <string name="date_text">Date</string>
+    <string name="hour_text">Hour</string>
+    <string name="reservation_name">Reservation\'s name</string>
+    <string name="phone_number">Phone number</string>
 </resources>
