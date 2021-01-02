@@ -1,14 +1,78 @@
 package com.example.reservationapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import com.example.reservationapp.Class.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
+    EditText etName, etLastname, etEmail, etPassword;
+    Button btnRegister;
+    FirebaseAuth auth;
+    DatabaseReference mDatabase;
+    String id, name,lastname, email, password;
+    private static final String URL = "https://reservation-app-9b715-default-rtdb.firebaseio.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        etName = findViewById(R.id.editText_user_name);
+        etLastname = findViewById(R.id.editText_user_lastname);
+        etEmail = findViewById(R.id.editText_user_email);
+        etPassword = findViewById(R.id.editText_user_password);
+        btnRegister = findViewById(R.id.button_register);
+
+        auth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance(URL).getReference();
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                name = etName.getText().toString();
+                lastname = etLastname.getText().toString();
+                email = etEmail.getText().toString();
+                password = etPassword.getText().toString();
+
+                if(name.isEmpty() || lastname.isEmpty() || email.isEmpty() || password.isEmpty())
+                    Toast.makeText(RegisterActivity.this, R.string.error_empty_fields, Toast.LENGTH_SHORT).show();
+                else
+                    Register();
+            }
+        });
+    }
+
+    private void Register() {
+        auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        id = auth.getCurrentUser().getUid();
+                        User user = new User(id,name,lastname,email,password);
+
+                        mDatabase.child("users").child(user.getId()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful())
+                                    Toast.makeText(RegisterActivity.this, R.string.user_register, Toast.LENGTH_SHORT).show();
+                                else
+                                    Toast.makeText(RegisterActivity.this, R.string.user_register_fail, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                    else
+                        Toast.makeText(RegisterActivity.this, R.string.user_register_fail, Toast.LENGTH_SHORT).show();
+                }
+        });
     }
 }

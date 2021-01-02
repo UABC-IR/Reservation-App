@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Reservacion App</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="type_your_email">Type your email</string>
+    <string name="type_your_password">Type your password</string>
+    <string name="or">or</string>
+    <string name="name">NAme</string>
+    <string name="type_your_name">Type your name</string>
+    <string name="lastname">Lastname</string>
+    <string name="type_your_lastname">Type your lastname</string>
+    <string name="error_empty_fields">Empty fields error</string>
+    <string name="user_register">User register</string>
+    <string name="user_register_fail">Failed to register</string>
+    <string name="login_fail">Error datos invalidos</string>
+</resources>

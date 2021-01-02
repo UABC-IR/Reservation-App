@@ -1,9 +1,20 @@
 <resources>
-    <string name="app_name">Reservation App</string>
-    <string name="password">Password</string>
-    <string name="email">Email</string>
-    <string name="login">Login</string>
-    <string name="register">Register</string>
-    <string name="sign_in">Sign In</string>
-    <string name="type_your_password">Type your password</string>
+    <string name="app_name">Reservacion App</string>
+    <string name="password">Contraseña</string>
+    <string name="email">Correo</string>
+    <string name="login">Iniciar Sesion</string>
+    <string name="register">Registrate</string>
+    <string name="sign_in">Ingresar</string>
+    <string name="sign_up">Registrarse</string>
+    <string name="type_your_email">Ingresar su correo</string>
+    <string name="type_your_password">Ingresar su contraseña</string>
+    <string name="or">o</string>
+    <string name="name">Nombre</string>
+    <string name="type_your_name">Ingresa tu nombre</string>
+    <string name="lastname">Apellido</string>
+    <string name="type_your_lastname">Ingresa tu apellido</string>
+    <string name="error_empty_fields">Error completar campos</string>
+    <string name="user_register">Usuario registrado</string>
+    <string name="user_register_fail">Registro invalido</string>
+    <string name="login_fail">Error datos invalidos</string>
 </resources>
