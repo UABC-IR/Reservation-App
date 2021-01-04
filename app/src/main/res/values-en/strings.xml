@@ -18,4 +18,5 @@
     <string name="user_register">User register</string>
     <string name="user_register_fail">Failed to register</string>
     <string name="login_fail">Error datos invalidos</string>
+
 </resources>
