@@ -14,14 +14,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import static com.example.reservationapp.LoginActivity.URL;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText etName, etLastname, etEmail, etPassword;
-    Button btnRegister;
-    FirebaseAuth auth;
-    DatabaseReference mDatabase;
-    String id, name,lastname, email, password;
-    private static final String URL = "https://reservation-app-9b715-default-rtdb.firebaseio.com/";
+    private EditText etName, etLastname, etEmail, etPassword;
+    private Button btnRegister;
+    private FirebaseAuth auth;
+    private DatabaseReference mDatabase;
+    private String id, name,lastname, email, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +46,12 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if(name.isEmpty() || lastname.isEmpty() || email.isEmpty() || password.isEmpty())
                     Toast.makeText(RegisterActivity.this, R.string.error_empty_fields, Toast.LENGTH_SHORT).show();
-                else
-                    Register();
+                else {
+                    if (password.length() < 8)
+                        Toast.makeText(RegisterActivity.this, R.string.error_length_pass, Toast.LENGTH_SHORT).show();
+                    else
+                        Register();
+                }
             }
         });
     }
@@ -58,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         id = auth.getCurrentUser().getUid();
-                        User user = new User(id,name,lastname,email,password);
+                        User user = new User(name,lastname,email,password);
 
                         mDatabase.child("users").child(user.getId()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
@@ -66,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 if(task.isSuccessful())
                                     Toast.makeText(RegisterActivity.this, R.string.user_register, Toast.LENGTH_SHORT).show();
                                 else
-                                    Toast.makeText(RegisterActivity.this, R.string.user_register_fail, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisterActivity.this, R.string.user_register_fail1, Toast.LENGTH_SHORT).show();
                             }
                         });
                     }

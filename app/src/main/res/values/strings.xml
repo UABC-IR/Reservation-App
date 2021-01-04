@@ -14,8 +14,12 @@
     <string name="lastname">Apellido</string>
     <string name="type_your_lastname">Ingresa tu apellido</string>
     <string name="error_empty_fields">Error completar campos</string>
+    <string name="error_length_pass">La contrasea debe tener una longitud mayor de 8 caracteres</string>
+    <string name="msj_reservation1">Se realizo la reservacion</string>
+    <string name="msj_reservation2">Error, no se realizo la reservacion</string>
     <string name="user_register">Usuario registrado</string>
-    <string name="user_register_fail">Registro invalido</string>
+    <string name="user_register_fail">Error, correo invalido</string>
+    <string name="user_register_fail1">Error, correo ya registrado</string>
     <string name="login_fail">Error datos invalidos</string>
     <string-array name="reservation_example">
         <item>Diego @ 02/02/21</item>

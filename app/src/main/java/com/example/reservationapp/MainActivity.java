@@ -8,12 +8,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import com.example.reservationapp.Fragments.MyReservationFragment;
+import com.example.reservationapp.Fragments.TopFragment;
+import com.example.reservationapp.Fragments.UserInfoFragment;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
 
-        SectionsPagerAdapter pagerAdapter = new SectionsPagerAdapter(
-                getSupportFragmentManager());
+        SectionsPagerAdapter pagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         ViewPager pager =  findViewById(R.id.pager);
         pager.setAdapter(pagerAdapter);
 
@@ -43,14 +43,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.action_create_reservation:
-                Intent intent = new Intent(MainActivity.this, CreateReservationActivity.class);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.action_create_reservation) {
+            Intent intent = new Intent(MainActivity.this, CreateReservationActivity.class);
+            startActivity(intent);
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     private class SectionsPagerAdapter extends FragmentPagerAdapter{

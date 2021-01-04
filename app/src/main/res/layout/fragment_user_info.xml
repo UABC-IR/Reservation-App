@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:background="@drawable/gradient_bg"
-    tools:context=".UserInfoFragment">
+    tools:context=".Fragments.UserInfoFragment">
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"

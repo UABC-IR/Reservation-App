@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:background="@drawable/gradient_bg"
-    tools:context=".TopFragment">
+    tools:context=".Fragments.TopFragment">
 
     <TextView
         android:layout_width="wrap_content"
