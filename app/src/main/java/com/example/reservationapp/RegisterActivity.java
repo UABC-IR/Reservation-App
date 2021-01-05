@@ -3,11 +3,14 @@ package com.example.reservationapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.reservationapp.Class.SharedPreference;
 import com.example.reservationapp.Class.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private DatabaseReference mDatabase;
     private String id, name,lastname, email, password;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,8 @@ public class RegisterActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.editText_user_email);
         etPassword = findViewById(R.id.editText_user_password);
         Button btnRegister = findViewById(R.id.button_register);
+
+        preferences = getSharedPreferences(SharedPreference.namePreference, MODE_PRIVATE);
 
         auth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance(URL).getReference();
@@ -63,12 +69,19 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         id = Objects.requireNonNull(auth.getCurrentUser()).getUid();
-                        User user = new User(name,lastname,email,password);
+                        final User user = new User(name,lastname,email,password);
 
                         mDatabase.child("users").child(id).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()) {
+                                    SharedPreferences.Editor edit = preferences.edit();
+                                    edit.putString(SharedPreference.KeyId,id);
+                                    edit.putString(SharedPreference.KeyName,user.getName());
+                                    edit.putString(SharedPreference.KeyLastname, user.getLastname());
+                                    edit.putString(SharedPreference.KeyEmail, user.getEmail());
+                                    edit.putString(SharedPreference.KeyPassword, user.getPassword());
+                                    edit.apply();
                                     Toast.makeText(RegisterActivity.this, R.string.user_register, Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                     finish();

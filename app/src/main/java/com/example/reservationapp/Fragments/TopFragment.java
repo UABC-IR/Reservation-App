@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.reservationapp.Class.Reservation;
@@ -91,17 +92,13 @@ public class TopFragment extends Fragment {
         });
 
         /*Boton para crear una reservación*/
-        ImageButton btnBooking = view.findViewById(R.id.imageButton_addReservation);
+        ImageView btnBooking = view.findViewById(R.id.imageButton_addReservation);
         btnBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TopFragment.this.getContext(), CreateReservationActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(TopFragment.this.getContext(), CreateReservationActivity.class));
             }
         });
-
-
-
 
         return view;
     }

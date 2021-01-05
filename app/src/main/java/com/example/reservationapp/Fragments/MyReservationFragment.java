@@ -22,8 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Objects;
-
 import static android.content.Context.MODE_PRIVATE;
 import static com.example.reservationapp.LoginActivity.URL;
 
