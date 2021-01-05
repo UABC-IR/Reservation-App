@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +25,8 @@ public class CreateReservationActivity extends AppCompatActivity {
     private EditText etDate, etTime, etName, etPhone;
     private String id,date, time, name, phone;
     private DatabaseReference mDatabase;
+    public String reservationId = null;
+    public final static String EXTRA_RESERVATION_ID = "reservationId";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,16 +68,23 @@ public class CreateReservationActivity extends AppCompatActivity {
     }
 
     private void RegisterReservation() {
-        Reservation reservation = new Reservation(id,date,time,name,phone);
+        final Reservation reservation = new Reservation(id,date,time,name,phone);
         reservation.setId(UUID.randomUUID().toString());
+        this.reservationId = reservation.getId();
         mDatabase.child("reservation").child(reservation.getId()).setValue(reservation).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful())
+                if(task.isSuccessful()){
                     Toast.makeText(CreateReservationActivity.this, R.string.msj_reservation1, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(CreateReservationActivity.this, MainActivity.class);
+                    System.out.println("Im in CreateReservationActivity Reservation ID:"+reservation.getId());
+                    intent.putExtra(EXTRA_RESERVATION_ID, reservation.getId());
+                    startActivity(intent);
+                }
                 else
                     Toast.makeText(CreateReservationActivity.this, R.string.msj_reservation2, Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }
