@@ -5,6 +5,9 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -25,7 +28,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8633f0c4-0bbe-41cf-98f6-36fa3c59380f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,6 +188,10 @@
     </state>
     <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1609795662715" />
     <state x="686" y="71" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1609805761387" />
+    <state x="1063" y="569" width="433" height="268" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1609809690295">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1063" y="569" width="433" height="268" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/2560.160.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1609809690295" />
     <state x="370" y="194" key="AndroidCreateResourceFileDialog" timestamp="1609802394060">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -204,30 +211,34 @@
     </state>
     <state x="463" y="131" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1609784930080" />
     <state x="463" y="138" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1605038976747" />
-    <state width="1877" height="355" key="GridCell.Tab.0.bottom" timestamp="1609806146316">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1258" height="400" key="GridCell.Tab.0.bottom" timestamp="1609809213181">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1323" height="180" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1609794085260" />
     <state width="1323" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1605387324682" />
     <state width="1877" height="355" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1609806146316" />
-    <state width="1877" height="355" key="GridCell.Tab.0.center" timestamp="1609806146316">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1258" height="400" key="GridCell.Tab.0.bottom/2560.160.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1609809213181" />
+    <state width="1258" height="400" key="GridCell.Tab.0.center" timestamp="1609809213181">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1323" height="180" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1609794085260" />
     <state width="1323" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1605387324682" />
     <state width="1877" height="355" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1609806146316" />
-    <state width="1877" height="355" key="GridCell.Tab.0.left" timestamp="1609806146316">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1258" height="400" key="GridCell.Tab.0.center/2560.160.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1609809213181" />
+    <state width="1258" height="400" key="GridCell.Tab.0.left" timestamp="1609809213181">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1323" height="180" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1609794085260" />
     <state width="1323" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1605387324682" />
     <state width="1877" height="355" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1609806146316" />
-    <state width="1877" height="355" key="GridCell.Tab.0.right" timestamp="1609806146316">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1258" height="400" key="GridCell.Tab.0.left/2560.160.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1609809213181" />
+    <state width="1258" height="400" key="GridCell.Tab.0.right" timestamp="1609809213181">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1323" height="180" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1609794085260" />
     <state width="1323" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1605387324682" />
     <state width="1877" height="355" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1609806146316" />
+    <state width="1258" height="400" key="GridCell.Tab.0.right/2560.160.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1609809213181" />
     <state x="129" y="55" key="MergeDialog" timestamp="1609747616557">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
