@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.example.reservationapp.Class.Reservation;
 import com.example.reservationapp.Class.SharedPreference;
+import com.example.reservationapp.Fragments.TopFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -55,23 +58,35 @@ public class CreateReservationActivity extends AppCompatActivity {
                 time = etTime.getText().toString();
                 name = etName.getText().toString();
                 phone = etPhone.getText().toString();
+                System.out.println("Date: " + date);
+                System.out.println("Time: " + time);
+                System.out.println("Name: " + name);
+                System.out.println("Phone: " + phone);
                 if(date.isEmpty() || time.isEmpty() || name.isEmpty() || phone.isEmpty())
                     Toast.makeText(CreateReservationActivity.this, R.string.error_empty_fields, Toast.LENGTH_SHORT).show();
-                else
+                else{
+                    System.out.println("Los campos estan completos");
                     RegisterReservation();
+
+                }
             }
         });
     }
 
     private void RegisterReservation() {
-        Reservation reservation = new Reservation(id,date,time,name,phone);
+        final Reservation reservation = new Reservation(id,date,time,name,phone);
         mDatabase.child("reservation").child(reservation.getId()).setValue(reservation).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful())
+                if(task.isSuccessful()){
                     Toast.makeText(CreateReservationActivity.this, R.string.msj_reservation1, Toast.LENGTH_SHORT).show();
-                else
+                    Intent intent = new Intent(CreateReservationActivity.this, MainActivity.class);
+                    intent.putExtra(TopFragment.EXTRA_RESERVATION_ID, reservation);
+                    startActivity(intent);
+                }
+                else{
                     Toast.makeText(CreateReservationActivity.this, R.string.msj_reservation2, Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
