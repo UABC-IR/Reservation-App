@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="Información de reservación"
+        android:text="@string/reservacioninfo"
         android:textColor="@color/charcoal"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -49,10 +49,10 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fecha"
+                android:layout_marginTop="10dp"
+                android:text="@string/date"
                 android:textSize="20sp" />
 
             <TextView
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Hora"
+                android:text="@string/hour"
                 android:textSize="20sp" />
 
             <TextView
@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Reservación para"
+                android:text="@string/reservarpara"
                 android:textSize="20sp" />
 
             <TextView
@@ -94,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="45dp"
-                android:text="*Despues de 15 minutos de retraso su reservación será cancelada"
+                android:text="@string/retraso"
                 android:textStyle="bold" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

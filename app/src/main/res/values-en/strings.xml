@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Reservacion App</string>
+    <string name="app_name">Reservation App</string>
     <string name="password">Password</string>
+    <string name="bienvenido">Welcome</string>
+    <string name="generalinformation">General Information</string>
+    <string name="date">Date</string>
+    <string name="hour">Reservation Time</string>
+    <string name="numtelefono">Phone Number</string>
     <string name="email">Email</string>
+    <string name="reservar">Book</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="sign_in">Sign In</string>
+    <string name="retraso">*After 15 minutes of delay your reservation will be cancelled</string>
+    <string name="nombrereservacion">Reservation Name</string>
+    <string name="reservacioninfo">Reservation Information</string>
     <string name="inforeservacion">Reservation Details</string>
+    <string name="reservarpara">Reservation For</string>
     <string name="sign_up">Sign Up</string>
     <string name="logout">Logout</string>
     <string name="type_your_email">Type your email</string>
     <string name="type_your_password">Type your password</string>
     <string name="or">or</string>
-    <string name="name">NAme</string>
+    <string name="name">Name</string>
     <string name="error_length_pass">Password length must contain more than 8 characters</string>
     <string name="type_your_name">Type your name</string>
     <string name="user_register_fail1">Email already in use</string>
     <string name="msj_reservation2">Couldn\'t set reservation due to an error</string>
-    <string name="lastname">Lastname</string>
+    <string name="lastname">Last name</string>
     <string name="msj_reservation1">Reservation has been set</string>
-    <string name="type_your_lastname">Type your lastname</string>
+    <string name="type_your_lastname">Type your last name</string>
     <string name="error_empty_fields">Empty fields error</string>
     <string name="user_register">User register</string>
     <string name="user_register_fail">Failed to register</string>
     <string name="hello_blank_fragment">hello blank fragment</string>
     <string name="title_top">Top Fragment</string>
-    <string name="login_fail">Error datos invalidos</string>
+    <string name="login_fail">Invalid info, login failed</string>
 
 </resources>
