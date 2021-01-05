@@ -37,23 +37,28 @@ public class TopFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_top, container, false);
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance(URL).getReference();
 
+        preferences = getContext().getSharedPreferences(SharedPreference.namePreference, MODE_PRIVATE);
+        String currentUserId = preferences.getString(SharedPreference.KeyId,null);
+        //String reservationId = getActivity().getIntent().getStringExtra(CreateReservationActivity.EXTRA_RESERVATION_ID);
+        //System.out.println("Reservation ID: " + reservationId);
 
-
-        String reservationId = getActivity().getIntent().getStringExtra(CreateReservationActivity.EXTRA_RESERVATION_ID);
-        System.out.println("Reservation ID: " + reservationId);
         final TextView reservationName = view.findViewById(R.id.home_reservationName);
         final TextView reservationDate = view.findViewById(R.id.home_reservationDate);
         final TextView reservationHour = view.findViewById(R.id.home_reservationHour);
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance(URL).getReference();
-        if (reservationId != null){
-            mDatabase.child("reservation").child(reservationId).addValueEventListener(new ValueEventListener() {
+
+
+
+            mDatabase.child("reservation").orderByChild("idUser").equalTo(currentUserId).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    reservationName.setText(Objects.requireNonNull(dataSnapshot.child("name").getValue().toString()));
-                    reservationDate.setText(Objects.requireNonNull(dataSnapshot.child("date").getValue().toString()));
-                    reservationHour.setText(Objects.requireNonNull(dataSnapshot.child("time").getValue().toString()));
-                    System.out.println(Objects.requireNonNull(dataSnapshot.child("phone").getValue()).toString());
+                    for (DataSnapshot userSnapshot: dataSnapshot.getChildren()){
+                        System.out.println("========================TOP FRAGMENT=========================" );
+                        reservationName.setText(userSnapshot.child("name").getValue(String.class));
+                        reservationDate.setText(userSnapshot.child("date").getValue(String.class));
+                        reservationHour.setText(userSnapshot.child("time").getValue(String.class));
+                    }
                 }
 
                 @Override
@@ -61,7 +66,6 @@ public class TopFragment extends Fragment {
 
                 }
             });
-        }
 
         /*Boton que cierra sesión*/
         Button btnLogout = view.findViewById(R.id.button_logout);
