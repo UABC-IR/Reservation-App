@@ -25,7 +25,7 @@ import java.util.Objects;
 public class LoginActivity extends AppCompatActivity {
     private EditText etEmail, etPassword;
     private String email, password;
-    private FirebaseAuth auth;
+    public FirebaseAuth auth;
     private DatabaseReference mDatabase;
     public static final String URL = "https://reservation-app-9b715-default-rtdb.firebaseio.com/";
     private SharedPreferences preferences;
