@@ -1,8 +1,9 @@
 package com.example.reservationapp.Class;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Reservation {
+public class Reservation implements Serializable {
     private String id;
     private String idUser;
     private String date;
