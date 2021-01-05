@@ -2,6 +2,8 @@ package com.example.reservationapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,9 +16,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.Objects;
-
 import static com.example.reservationapp.LoginActivity.URL;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -66,15 +66,19 @@ public class RegisterActivity extends AppCompatActivity {
                         id = Objects.requireNonNull(auth.getCurrentUser()).getUid();
                         User user = new User(name,lastname,email,password);
 
-                        mDatabase.child("users").child(user.getId()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        mDatabase.child("users").child(id).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful())
+                                if(task.isSuccessful()) {
                                     Toast.makeText(RegisterActivity.this, R.string.user_register, Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                    finish();
+                                }
                                 else
                                     Toast.makeText(RegisterActivity.this, R.string.user_register_fail1, Toast.LENGTH_SHORT).show();
                             }
                         });
+
                     }
                     else
                         Toast.makeText(RegisterActivity.this, R.string.user_register_fail, Toast.LENGTH_SHORT).show();
