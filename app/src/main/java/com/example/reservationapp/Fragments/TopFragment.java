@@ -11,10 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.example.reservationapp.Class.SharedPreference;
-import com.example.reservationapp.DetailActivity;
 import com.example.reservationapp.LoginActivity;
 import com.example.reservationapp.R;
-import java.util.Objects;
 import static android.content.Context.MODE_PRIVATE;
 
 public class TopFragment extends Fragment {
