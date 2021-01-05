@@ -36,5 +36,8 @@
     <string name="hello_blank_fragment">hello blank fragment</string>
     <string name="title_top">Top Fragment</string>
     <string name="login_fail">Invalid info, login failed</string>
+    <string name="home_tab">Home</string>
+    <string name="profile_tab">Account</string>
+    <string name="reservation_tab">Reservation</string>
 
 </resources>

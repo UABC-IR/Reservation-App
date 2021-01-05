@@ -38,9 +38,10 @@
         <item>Diego @ 10/03/21</item>
         <item>Diego @ 18/03/21</item>
     </string-array>
-    <string name="home_tab" translatable="false">Home</string>
-    <string name="profile_tab" translatable="false">Account</string>
-    <string name="reservation_tab" translatable="false">Reservations</string>
+
+    <string name="home_tab">Inicio</string>
+    <string name="profile_tab">Cuenta</string>
+    <string name="reservation_tab">Reservaciones</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_top">Top Fragment</string>
