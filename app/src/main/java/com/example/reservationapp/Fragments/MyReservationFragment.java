@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.example.reservationapp.LoginActivity.URL;
@@ -29,6 +30,7 @@ import static com.example.reservationapp.LoginActivity.URL;
 public class MyReservationFragment extends ListFragment {
     private ArrayList<String> reservationList = new ArrayList<String>();
     private ArrayList<Reservation> reservations = new ArrayList<>();
+    private ArrayList<String> idArrays = new ArrayList<>();
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         SharedPreferences preferences;
@@ -48,6 +50,7 @@ public class MyReservationFragment extends ListFragment {
                             " @ "+ userSnapshot.child("time").getValue(String.class)
                             + " " + userSnapshot.child("date").getValue(String.class);
                     reservationList.add(aux);
+                    idArrays.add(userSnapshot.child("id").getValue(String.class));
                 }
 
                 /*Convert array list to Array of strings    */
@@ -72,29 +75,48 @@ public class MyReservationFragment extends ListFragment {
     public void onListItemClick(@NonNull ListView l, @NonNull View v, int position, long id) {
         System.out.println("Position: "+position);
         System.out.println("Id: "+id);
-        String[] reservations = new String[reservationList.size()];
-        reservations =  reservationList.toArray(reservations);
-        showReservationInfo(reservations, (int) id);
+        showReservationInfo((int) id);
 
         super.onListItemClick(l, v, position, id);
     }
 
-    private void showReservationInfo(String[]array,  int id){
-        /*Este parte es hardcore con efectos de poder pasar un objecto a la clase Detail la cual en su
+    private void showReservationInfo(  int id){
+        /*Este parte es hardcode con efectos de poder pasar un objecto a la clase Detail la cual en su
         * layout muestra la info de la reservación*/
-        Reservation reservation = new Reservation();
+        SharedPreferences preferences;
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance(URL).getReference();
+        preferences = getContext().getSharedPreferences(SharedPreference.namePreference, MODE_PRIVATE);
+        String currentUserId = preferences.getString(SharedPreference.KeyId,null);
 
-        /*Informacion de prueba*/
-        reservation.setName("Diego");
-        reservation.setDate("01/02/2021");
-        reservation.setPhone("6641234567");
-        reservation.setTime("15:30");
 
-        if (id == 0) {/*cuando se presiona el primer elemento de la lista manda el objecto creado de arriba en el Intent
-         * Despues la clase que lo recibe lo usar para setear los valores en los TextViews correspondientes.*/
-            Intent intent = new Intent(MyReservationFragment.this.getContext(), DetailActivity.class);
-            intent.putExtra(DetailActivity.EXTRA_RESERVATION_ID, (Serializable) reservation);
-            startActivity(intent);
-        }
+        final Reservation reservation = new Reservation();
+        String[] reservationsIds = new String[idArrays.size()];
+        System.out.println(">>>>>>> Id arrays ->"+idArrays.get(id));
+        //idArrays.get()
+        reservationsIds = idArrays.toArray(reservationsIds);
+
+        mDatabase.child("reservation").child(idArrays.get(id)).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                System.out.println(dataSnapshot.child("name").getValue(String.class));
+                reservation.setName(dataSnapshot.child("name").getValue(String.class));
+                System.out.println(dataSnapshot.child("date").getValue(String.class));
+                reservation.setDate(dataSnapshot.child("date").getValue(String.class));
+                System.out.println(dataSnapshot.child("phone").getValue(String.class));
+                reservation.setPhone(dataSnapshot.child("phone").getValue(String.class));
+                System.out.println(dataSnapshot.child("time").getValue(String.class));
+                reservation.setTime(dataSnapshot.child("time").getValue(String.class));
+
+                Intent intent = new Intent(MyReservationFragment.this.getContext(), DetailActivity.class);
+                intent.putExtra(DetailActivity.EXTRA_RESERVATION_ID, (Serializable) reservation);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }
