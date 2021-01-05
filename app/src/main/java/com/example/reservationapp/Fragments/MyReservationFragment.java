@@ -1,15 +1,10 @@
 package com.example.reservationapp.Fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.ListFragment;
-
-import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +14,6 @@ import com.example.reservationapp.Class.Reservation;
 import com.example.reservationapp.Class.SharedPreference;
 import com.example.reservationapp.DetailActivity;
 import com.example.reservationapp.R;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.example.reservationapp.LoginActivity.URL;
@@ -87,7 +82,7 @@ public class MyReservationFragment extends ListFragment {
 
     private void showReservationInfo(  int id){
         /*Este parte es hardcode con efectos de poder pasar un objecto a la clase Detail la cual en su
-         * layout muestra la info de la reservación*/
+        * layout muestra la info de la reservación*/
         SharedPreferences preferences;
         DatabaseReference mDatabase = FirebaseDatabase.getInstance(URL).getReference();
         preferences = getContext().getSharedPreferences(SharedPreference.namePreference, MODE_PRIVATE);
