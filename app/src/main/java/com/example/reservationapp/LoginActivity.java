@@ -20,9 +20,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
     private EditText etEmail, etPassword;
-    private Button btnSignin, btnSignup;
     private String email, password;
     private FirebaseAuth auth;
     private DatabaseReference mDatabase;
@@ -37,8 +38,8 @@ public class LoginActivity extends AppCompatActivity {
 
         etEmail = findViewById(R.id.editText_login_user);
         etPassword = findViewById(R.id.editText_login_password);
-        btnSignin = findViewById(R.id.button_login_signIn);
-        btnSignup = findViewById(R.id.button_login_register);
+        Button btnSignin = findViewById(R.id.button_login_signIn);
+        Button btnSignup = findViewById(R.id.button_login_register);
 
         auth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance(URL).getReference();
@@ -71,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
             }
         });
+
     }
 
     private void Login(){
@@ -95,11 +97,11 @@ public class LoginActivity extends AppCompatActivity {
                 if(dataSnapshot.exists()){
                     SharedPreferences.Editor edit = preferences.edit();
                     edit.putString(SharedPreference.KeyId,id);
-                    edit.putString(SharedPreference.KeyName,dataSnapshot.child("name").getValue().toString());
-                    edit.putString(SharedPreference.KeyLastname,dataSnapshot.child("lastname").getValue().toString());
-                    edit.putString(SharedPreference.KeyEmail,dataSnapshot.child("email").getValue().toString());
-                    edit.putString(SharedPreference.KeyPassword,dataSnapshot.child("password").getValue().toString());
-                    edit.commit();
+                    edit.putString(SharedPreference.KeyName, Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString());
+                    edit.putString(SharedPreference.KeyLastname, Objects.requireNonNull(dataSnapshot.child("lastname").getValue()).toString());
+                    edit.putString(SharedPreference.KeyEmail, Objects.requireNonNull(dataSnapshot.child("email").getValue()).toString());
+                    edit.putString(SharedPreference.KeyPassword, Objects.requireNonNull(dataSnapshot.child("password").getValue()).toString());
+                    edit.apply();
                 }
             }
 

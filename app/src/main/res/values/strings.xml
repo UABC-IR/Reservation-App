@@ -5,7 +5,9 @@
     <string name="login">Iniciar Sesion</string>
     <string name="register">Registrate</string>
     <string name="sign_in">Ingresar</string>
+    <string name="inforeservacion">Detalles de Reservacion</string>
     <string name="sign_up">Registrarse</string>
+    <string name="logout">Salir</string>
     <string name="type_your_email">Ingresar su correo</string>
     <string name="type_your_password">Ingresar su contraseña</string>
     <string name="or">o</string>

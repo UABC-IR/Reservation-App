@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout =findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(pager);
+
     }
 
     @Override

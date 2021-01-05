@@ -1,8 +1,9 @@
 package com.example.reservationapp.Class;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Reservation {
+public class Reservation implements Serializable {
     private String id;
     private String idUser;
     private String date;
@@ -14,7 +15,6 @@ public class Reservation {
     }
 
     public Reservation(String idUser, String date, String time, String name, String phone) {
-        this.id = UUID.randomUUID().toString();
         this.idUser = idUser;
         this.date = date;
         this.time = time;

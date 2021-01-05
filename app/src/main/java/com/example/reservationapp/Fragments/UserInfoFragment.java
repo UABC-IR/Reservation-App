@@ -3,7 +3,6 @@ package com.example.reservationapp.Fragments;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,13 +16,12 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class UserInfoFragment extends Fragment{
     private SharedPreferences preferences;
-    private User user;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user_info, container, false);
 
-        user = LoadSharedPreferences();
+        User user = LoadSharedPreferences();
 
         TextView name = view.findViewById(R.id.userProfile_name);
         name.setText(user.getName());

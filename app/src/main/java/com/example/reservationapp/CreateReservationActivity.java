@@ -16,14 +16,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.UUID;
+
 import static com.example.reservationapp.LoginActivity.URL;
 
 public class CreateReservationActivity extends AppCompatActivity {
-    private Button btnReservation;
     private EditText etDate, etTime, etName, etPhone;
     private String id,date, time, name, phone;
     private DatabaseReference mDatabase;
-    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +36,18 @@ public class CreateReservationActivity extends AppCompatActivity {
         etName = findViewById(R.id.personName_reservation);
         etPhone = findViewById(R.id.person_phoneNumber);
 
-        btnReservation = findViewById(R.id.btnCreateReservation);
+        Button btnReservation = findViewById(R.id.btnCreateReservation);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         mDatabase = FirebaseDatabase.getInstance(URL).getReference();
 
-        preferences = getSharedPreferences(SharedPreference.namePreference, MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences(SharedPreference.namePreference, MODE_PRIVATE);
         id = preferences.getString(SharedPreference.KeyId,null);
 
         btnReservation.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +67,7 @@ public class CreateReservationActivity extends AppCompatActivity {
 
     private void RegisterReservation() {
         Reservation reservation = new Reservation(id,date,time,name,phone);
+        reservation.setId(UUID.randomUUID().toString());
         mDatabase.child("reservation").child(reservation.getId()).setValue(reservation).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

@@ -14,11 +14,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Objects;
+
 import static com.example.reservationapp.LoginActivity.URL;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText etName, etLastname, etEmail, etPassword;
-    private Button btnRegister;
     private FirebaseAuth auth;
     private DatabaseReference mDatabase;
     private String id, name,lastname, email, password;
@@ -31,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         etLastname = findViewById(R.id.editText_user_lastname);
         etEmail = findViewById(R.id.editText_user_email);
         etPassword = findViewById(R.id.editText_user_password);
-        btnRegister = findViewById(R.id.button_register);
+        Button btnRegister = findViewById(R.id.button_register);
 
         auth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance(URL).getReference();
@@ -61,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        id = auth.getCurrentUser().getUid();
+                        id = Objects.requireNonNull(auth.getCurrentUser()).getUid();
                         User user = new User(name,lastname,email,password);
 
                         mDatabase.child("users").child(user.getId()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
