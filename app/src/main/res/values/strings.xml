@@ -1,9 +1,19 @@
 <resources>
     <string name="app_name">Reservacion App</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="nombrereservacion">Nombre de Reservacion</string>
     <string name="password">Contraseña</string>
+    <string name="date">Fecha</string>
+    <string name="hour">Hora</string>
+    <string name="generalinformation">Informacion General</string>
     <string name="email">Correo</string>
     <string name="login">Iniciar Sesion</string>
+    <string name="numtelefono">Numero Telefonico</string>
     <string name="register">Registrate</string>
+    <string name="reservar">Reservar</string>
+    <string name="reservarpara">Reservacion para</string>
+    <string name="retraso">*Despues de 15 minutos de retraso su reservación será cancelada</string>
+    <string name="reservacioninfo">Informacion de Reservacion</string>
     <string name="sign_in">Ingresar</string>
     <string name="inforeservacion">Detalles de Reservacion</string>
     <string name="sign_up">Registrarse</string>
@@ -16,7 +26,7 @@
     <string name="lastname">Apellido</string>
     <string name="type_your_lastname">Ingresa tu apellido</string>
     <string name="error_empty_fields">Error completar campos</string>
-    <string name="error_length_pass">La contrasea debe tener una longitud mayor de 8 caracteres</string>
+    <string name="error_length_pass">La contraseña debe tener una longitud mayor de 8 caracteres</string>
     <string name="msj_reservation1">Se realizo la reservacion</string>
     <string name="msj_reservation2">Error, no se realizo la reservacion</string>
     <string name="user_register">Usuario registrado</string>
