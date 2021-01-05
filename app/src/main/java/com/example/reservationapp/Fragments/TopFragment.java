@@ -41,14 +41,27 @@ public class TopFragment extends Fragment {
 
         preferences = getContext().getSharedPreferences(SharedPreference.namePreference, MODE_PRIVATE);
         String currentUserId = preferences.getString(SharedPreference.KeyId,null);
-        //String reservationId = getActivity().getIntent().getStringExtra(CreateReservationActivity.EXTRA_RESERVATION_ID);
+        String reservationId = getActivity().getIntent().getStringExtra(CreateReservationActivity.EXTRA_RESERVATION_ID);
         //System.out.println("Reservation ID: " + reservationId);
-
         final TextView reservationName = view.findViewById(R.id.home_reservationName);
         final TextView reservationDate = view.findViewById(R.id.home_reservationDate);
         final TextView reservationHour = view.findViewById(R.id.home_reservationHour);
 
+        if(reservationId != null){
+            mDatabase.child("reservation").child(reservationId).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    reservationName.setText( Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString() );
+                    reservationHour.setText( Objects.requireNonNull(dataSnapshot.child("time").getValue()).toString() );
+                    reservationDate.setText( Objects.requireNonNull(dataSnapshot.child("date").getValue()).toString() );
+                }
 
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
 
             mDatabase.child("reservation").orderByChild("idUser").equalTo(currentUserId).addValueEventListener(new ValueEventListener() {
                 @Override

@@ -44,7 +44,10 @@ public class MyReservationFragment extends ListFragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot userSnapshot: dataSnapshot.getChildren()){
-                    reservationList.add(userSnapshot.child("name").getValue(String.class));
+                    String aux = userSnapshot.child("name").getValue(String.class) +
+                            " @ "+ userSnapshot.child("time").getValue(String.class)
+                            + " " + userSnapshot.child("date").getValue(String.class);
+                    reservationList.add(aux);
                 }
 
                 /*Convert array list to Array of strings    */
@@ -55,7 +58,6 @@ public class MyReservationFragment extends ListFragment {
                         android.R.layout.simple_list_item_1,
                         reservations);
                 setListAdapter(adapter);
-                System.out.println("ReservationList size"+ reservationList.size());
             }
 
             @Override
