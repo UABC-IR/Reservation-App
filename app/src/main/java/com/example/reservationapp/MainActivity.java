@@ -42,16 +42,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_create_reservation) {
-            Intent intent = new Intent(MainActivity.this, CreateReservationActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     private class SectionsPagerAdapter extends FragmentPagerAdapter{
         public SectionsPagerAdapter(FragmentManager fm){
             super(fm);

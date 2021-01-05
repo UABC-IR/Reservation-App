@@ -39,5 +39,6 @@
     <string name="home_tab">Home</string>
     <string name="profile_tab">Account</string>
     <string name="reservation_tab">Reservation</string>
-
+    <string name="none_text">----</string>
+    <string name="create_reservation">Create reservation</string>
 </resources>

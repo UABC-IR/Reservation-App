@@ -18,7 +18,7 @@
         </activity>
         <activity
             android:name=".CreateReservationActivity"
-            android:label="Crear reservación"
+            android:label="@string/create_reservation"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -34,7 +34,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="Reservation App" />
+            android:label="@string/app_name" />
     </application>
 
 </manifest>

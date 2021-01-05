@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import com.example.reservationapp.Class.SharedPreference;
+import com.example.reservationapp.CreateReservationActivity;
 import com.example.reservationapp.LoginActivity;
 import com.example.reservationapp.R;
 import static android.content.Context.MODE_PRIVATE;
@@ -23,12 +25,20 @@ public class TopFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_top, container, false);
 
         Button btnLogout = view.findViewById(R.id.button_logout);
+        ImageView btnNew = view.findViewById(R.id.imageButton_addReservation);
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 preferences.edit().clear().apply();
                 startActivity(new Intent(TopFragment.this.getContext(), LoginActivity.class));
+            }
+        });
+
+        btnNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TopFragment.this.getContext(), CreateReservationActivity.class));
             }
         });
 
